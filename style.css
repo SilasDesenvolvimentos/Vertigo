@@ -793,3 +793,131 @@ body::-webkit-scrollbar-track {
 .dropdown-usuario.aberto .dropdown-conteudo {
     display: block;
 }
+
+
+/* JFOSAJFIODSJAIOFAJSD */
+.carrinho-container
+{
+    display: flex;
+    align-items: stretch;
+    text-align: center;
+    flex-direction: column;
+    
+    padding: 4px;
+    margin: 16px;
+    align-self: center;
+    box-sizing: border-box;
+
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(5px);
+    outline: solid white 1px;
+    border-radius: 20px;
+
+    box-shadow: 0 0 40px black;
+}
+.formpage-container h1
+{
+    margin: 0;
+}
+.carrinho {
+    appearance: none;
+    width: 600px;
+    border-collapse: collapse;
+    font-size: 14px;
+
+    
+    border: white 1px solid;
+    margin-block: 4px;
+    
+}
+.carrinho .produto-nome
+{
+    text-align: left;
+}
+.carrinho .produto-imagem-container
+{
+    height: 70px;
+    width: 70px;
+    aspect-ratio: 1 / 1;
+    margin: 4px;
+}
+
+/* Cabeçalho */
+.carrinho th {
+    appearance: none;
+    background: #000;
+    border: 1px solid white;
+    padding-inline: 16px;
+    padding-block: 8px;
+
+    text-align: left;
+}
+.carrinho th:first-child {
+    width: 60%;
+}
+
+.carrinho th:nth-child(2) {
+    width: 15%;
+}
+
+.carrinho th:nth-child(3) {
+    width: 12%;
+}
+
+.carrinho th:nth-child(4) {
+    width: 13%;
+}
+/* Células */
+.carrinho td {
+    appearance: none;
+    border: 1px solid white;
+}
+
+/* Produto */
+.produto {
+    appearance: none;
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    gap: 4px;
+}
+
+.produto img {
+    appearance: none;
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+/* Input */
+.carrinho input {
+    appearance: none;
+    width: 55px;
+    padding: 7px;
+    border: 1px solid white;
+    border-radius: 4px;
+}
+
+.produto .erase
+{
+    color: red;
+    font-size: 12px;
+    width: 20px;
+    border-radius: 100%;
+    aspect-ratio: 1/1;
+    background: #ff000022;
+    appearance: none;
+    border: none;
+    outline: solid red 1px;
+    transition: 0.3s;
+    border: solid black 0px;
+}
+
+.produto .erase:hover
+{
+    color: black;
+    scale: 1.1;
+    background: red;
+    border: solid black 1px;
+    outline: solid red 1px;
+}
