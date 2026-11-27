@@ -1,24 +1,4 @@
 
-const pesquisaInput = document.querySelector("#nome");
-const botaoPesquisa = document.querySelector("#botao-pesquisa");
-// ========================================
-// PARALLAX
-// ========================================
-
-window.addEventListener("scroll", () => {
-    const scroll = window.scrollY;
-
-    document.body.style.backgroundPositionY = `${scroll * 0.5}px`;
-
-    parallaxes.forEach(element => {
-        const speed = 0.3;
-        element.style.transform = `translateY(${scroll * speed}px)`;
-    });
-});
-
-const parallaxes = document.querySelectorAll(".parallax");
-
-
 // ========================================
 // SLIDER DE PREÇO
 // ========================================
@@ -190,6 +170,14 @@ if (produtos.length === 0) {
         249.90,
         "2026-09-04",
         "estampa"
+    );
+
+    adicionarProduto(
+        "Eu curto rock com a minha mãe",
+        "sourock.png",
+        109.00,
+        "2026-09-03",
+        "estampa-frase"
     );
     
 }
@@ -382,34 +370,46 @@ ordenacao.forEach(input => {
 updateRange();
 
 
-// Pesquisa ao digitar
-pesquisaInput.addEventListener("input", atualizarCatalogo);
-
 if(localStorage.getItem("usuarioLogado") === null)
 {
     localStorage.setItem("usuarioLogado","");
 }
 
-
 // ========================================
 // EVENTOS DA PESQUISA
 // ========================================
 
-function pesquisar() {
-    atualizarCatalogo();
 
-    document.querySelector("#catalogo").scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-    });
+let searchAnterior = new URL(window.location.href).searchParams.get("search");
+
+function verificarSearch() {
+    const searchAtual = new URL(window.location.href).searchParams.get("search");
+
+    if (searchAtual !== searchAnterior) {
+        searchAnterior = searchAtual;
+
+        pesquisaInput.value = searchAtual
+        atualizarCatalogo()
+    }
 }
 
-// Pesquisa ao clicar na lupa
-botaoPesquisa.addEventListener("click", pesquisar);
+const pushOriginal = history.pushState;
+history.pushState = function (...args) {
+    pushOriginal.apply(this, args);
+    verificarSearch();
+};
 
-// Pesquisa ao apertar Enter
-pesquisaInput.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") {
-        pesquisar();
-    }
-});
+const replaceOriginal = history.replaceState;
+history.replaceState = function (...args) {
+    replaceOriginal.apply(this, args);
+    verificarSearch();
+};
+
+window.addEventListener("popstate", verificarSearch);
+
+if(searchAnterior !== null)
+{
+    pesquisaInput.value = searchAnterior
+    atualizarCatalogo()
+}
+
