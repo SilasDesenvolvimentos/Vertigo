@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" lang="pt-br">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="style.css" rel="stylesheet">
+        <title>
+            Inicio
+        </title>
+    </head>
+    <body>
+        <header id="topBar">
+        </header>
+        <section class="hero">
+            <article class="hero-section">
+                <h1 class="hero-banner">
+                    Explore <br>
+                    a espiral da <br>
+                    sua mente.
+                </h1>
+                
+                <p>
+                    Compre ou faça suas próprias estampas.
+                </p>
+                <a href="#catalogo" class="button-white">
+                    CATÁLOGO
+                </a>
+            </article>
+            <img class="hero-image parallax" src="/img/vertigoman.png">
+        </section>
+        <section class="section-produtos">
+            <h1 class="title-section" id="destaques">
+                DESTAQUES
+            </h1>
+            <div class="separator"></div>
+            <ul class="lista-destaques" id="itens-destaques">
+                
+            </ul>
+            
+            <div class="catalogo-container" id="catalogo">
+                <div class="catalogo-config black-text">
+                    <p>
+                        Ordenar por:
+                    </p>
+
+                    <div class="lista-opcoes">
+                        <label>
+                            <input type="radio" name="opcao" value="1">
+                            Menor preço
+                        </label>
+
+                        <label>
+                            <input type="radio" name="opcao" value="2">
+                            Maior preço
+                        </label>
+
+                        <label>
+                            <input type="radio" name="opcao" value="3">
+                            Mais recentes
+                        </label>
+
+                        <label>
+                            <input type="radio" name="opcao" value="4">
+                            Mais antigos
+                        </label>
+                    </div>
+                    <div class="separator"></div>
+                    <p>
+                        Mostrar:
+                    </p>
+                    <div class="lista-opcoes">
+                        <label>
+                            <input type="checkbox" name="opcao" value="frase">
+                            Frases
+                        </label>
+
+                        <label>
+                            <input type="checkbox" name="opcao" value="estampa">
+                            Estampas
+                        </label>
+
+                        <label>
+                            <input type="checkbox" name="opcao" value="estampa-frase">
+                            Estampas com Frases
+                        </label>
+                    </div>
+                    
+                    <div class="separator"></div>
+
+                    <p>
+                        Preço:
+                    </p>
+
+                    <div class="preco-container">
+                        <div class="range-container">
+                            <div class="range-track"></div>
+                            <div class="range-progress"></div>
+
+                            <input type="range" id="preco-min" min="50" max="300" value="50">
+                            <input type="range" id="preco-max" min="50" max="300" value="300">
+                        </div>
+
+                        <div class="range-values">
+                            <label id="valor-min">R$50,00</label>
+                            <label id="valor-max">R$300,00</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="catalogo-direita">
+                    <h1 class="title-section">
+                        CATÁLOGO
+                    </h1>
+                    <div class="separator"></div>
+                    <ul class="lista-catalogo" id="itens-catalogo">
+                        
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+    </body>
+    <script src="/topbar.js"></script>
+    <script src="script.js"></script>
+    
+</html>
