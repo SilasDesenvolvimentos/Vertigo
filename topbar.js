@@ -1,10 +1,16 @@
-const topbar = `
+var topBar = document.getElementById('topBar')
+
+
+
+const distance = topBar.getAttribute("distance")
+
+const topbarhtml = `
     <header class="top-bar">
         <div class="top-bar-inter">
-            <a class="logo" href="./index.html">Vertigo</a>
+            <a class="logo" href="${distance}/index.html">Vertigo</a>
             <div class="top-bar-opcoes">
-                <a href="#destaques">Destaques</a>
-                <a href="#catalogo">Catálogo</a>
+                <a href="${distance}/index.html#destaques">Destaques</a>
+                <a href="${distance}/index.html#catalogo">Catálogo</a>
             </div>
             <div class="pesquisa-container">
 
@@ -16,26 +22,26 @@ const topbar = `
                     class="barra-pesquisa"
                 >
 
-                <a type="button" id="botao-pesquisa" class="pesquisa-botao" href="#catalogo">
-                    <img class="icon-pesquisa" src="img/icon_lupa.png">
+                <a type="button" id="botao-pesquisa" class="pesquisa-botao">
+                    <img class="icon-pesquisa" src="${distance}/img/icon_lupa.png">
                 </a>
 
             </div>
             <div class="top-bar-opcoes">
-                <button href="#comprar" class="icon-button" id="carrinho-botao">
-                    <img src="img/icon_compra.png">
-                </button>
+                <a href="${distance}/carrinho/index.html" class="icon-button" id="carrinho-botao" >
+                    <img src="${distance}/img/icon_compra.png">
+                </a>
                 <div class="dropdown-usuario">
                     <button type="button" class="icon-button" id="usuario-botao">
-                        <img src="img/icon_user.png">
+                        <img src="${distance}/img/icon_user.png">
                     </button>
 
                     <div class="dropdown-conteudo" id="usuario-menu">
-                        <a href="./signup/index.html" id="botao-logout">Sair</a>
+                        <a href="${distance}/signup/index.html" id="botao-logout">Sair</a>
                     </div>
 
                 </div>
-                <a href="login/index.html" id="entrar-botao">
+                <a href="${distance}/login/index.html" id="entrar-botao">
                     ENTRAR
                 </a>
             </div>
@@ -43,8 +49,9 @@ const topbar = `
     </header>
 `;
 
-document.getElementById('topBar').innerHTML = topbar;
-
+document.getElementById('topBar').innerHTML = topbarhtml;
+const pesquisaInput = document.querySelector("#nome");
+const botaoPesquisa = document.querySelector("#botao-pesquisa");
 // ========================================
 // BOTÕES SUPERIORES
 // ========================================
@@ -90,6 +97,32 @@ botaoLogout.addEventListener("click", (event) => {
 
     localStorage.setItem("usuarioLogado", "");
 
-    window.location.href = "./index.html";
+    window.location.href = "index.html";
 
 });
+
+// ========================================
+// EVENTOS DA PESQUISA
+// ========================================
+
+function irParaCatalogo() {
+    window.location.href = `${distance}/index.html?search=${pesquisaInput.value.trim()}#catalogo`;
+}
+function atualizarURLpesquisa() {
+    if(distance == ".")
+    {
+        history.pushState(null, "",`?search=${pesquisaInput.value.trim()}`);
+    }
+        
+}
+// Pesquisa ao clicar na lupa
+botaoPesquisa.addEventListener("click", irParaCatalogo);
+
+// Pesquisa ao apertar Enter
+pesquisaInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+        irParaCatalogo()
+    }
+});
+
+pesquisaInput.addEventListener("input", atualizarURLpesquisa);
