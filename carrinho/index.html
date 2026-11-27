@@ -1,95 +1,38 @@
-// Pega o usuário atual
-function pegarUsuario() {
-    let usuarios = pegarUsuarios();
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" lang="pt-br">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../style.css" rel="stylesheet">
+        <title>
+            Carrinho
+        </title>
+    </head>
+    <body>
+        <header id="topBar" distance=".."></header>
+        <div class="carrinho-container">
+            <h1> Carrinho </h1>
+            <table class="carrinho">
+            <thead>
+                <tr>
+                    <th>Produto</th>
+                    <th>Preço</th>
+                </tr>
+            </thead>
 
-    return usuarios.find(usuario => usuario.email === emailUsuario);
-}
+            <tbody id="carrinhoTabela">
+                
+            </tbody>
+        </table>
+            <p>Total: <strong id="total">R$100,00</strong></p>
+            <button type="submit" class="button-white">COMPRAR TUDO</button>
+            <script src="../topbar.js"></script>
 
-// Pega o carrinho do usuário atual
-function pegarCarrinho() {
-    let usuario = pegarUsuario();
-
-    return usuario?.carrinho || [];
-}
-
-// Salva o carrinho do usuário atual
-function salvarCarrinho(carrinho) {
-    let usuarios = pegarUsuarios();
-
-    let usuario = usuarios.find(usuario => usuario.email === emailUsuario);
-
-    if (!usuario) return;
-
-    usuario.carrinho = carrinho;
-
-    localStorage.setItem("usuarios", JSON.stringify(usuarios));
-}
-
-function formatarPreco(preco) {
-    return preco.toLocaleString("pt-BR", {
-        style: "currency",
-        currency: "BRL"
-    });
-}
-
-function atualizarCarrinho() {
-    let carrinho = pegarCarrinho();
-
-    carrinhoTabela.innerHTML = "";
-
-    let total = 0;
-
-    carrinho.forEach(item => {
-        total += item.preco;
-
-        carrinhoTabela.insertAdjacentHTML("beforeend", `
-            <tr>
-                <td class="produto">
-                    <button class="erase" data-id="${item.id}">
-                        X
-                    </button>
-
-                    <div class="produto-imagem-container">
-                        <img class="roupa-base" src="../img/roupa_base_cor.png">
-                        <img class="roupa-estampa" src="../img/estampas/${item.imagem}">
-                        <img class="roupa-base" src="../img/roupa_cima.png">
-                    </div>
-
-                    <div class="separator" style="margin-right:10px"></div>
-                    <h3 class="produto-nome">${item.nome}</h3>
-                </td>
-
-                <td><b>${formatarPreco(item.preco)}</b></td>
-            </tr>
-        `);
-    });
-
-    totalElemento.textContent = formatarPreco(total);
-}
-
-// Apagar produto
-carrinhoTabela.addEventListener("click", event => {
-    let botao = event.target.closest(".erase");
-
-    if (!botao) return;
-
-    let carrinho = pegarCarrinho();
-
-    carrinho = carrinho.filter(
-        item => item.id != botao.dataset.id
-    );
-
-    salvarCarrinho(carrinho);
-
-    atualizarCarrinho();
-});
-
-// Carregar tabela
-if(localStorage.getItem("usuarioLogado") === "" )
-{
-    window.location.href = "../login/index.html"
-}else
-{
-    atualizarCarrinho();
-}
-
+            <script src="../usuarios.js"></script>
+            <script src="login.js"></script>
+            
+        </div>
+        <script src="carrinho.js"></script>
+        <script src="../parallax.js"></script>
+    </body>
+</html>
