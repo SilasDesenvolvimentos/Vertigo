@@ -3,30 +3,30 @@
     <head>
         <meta charset="UTF-8" lang="pt-br">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="/style.css" rel="stylesheet">
+        <link href="../style.css" rel="stylesheet">
         <title>
             Produto
         </title>
     </head>
     <body>
-        <header id="topBar">
+        <header id="topBar" distance="..">
         </header>
 
         <section class="produto-page-container">
             <div class="produto-card-container">
                 <div class="produto-imagem-container">
-                    <img class="roupa-base" src="/img/roupa_base_cor.png">
+                    <img class="roupa-base" src="../img/roupa_base_cor.png">
 
                     <img class="roupa-estampa" id="imagemProduto">
 
-                    <img class="roupa-base" src="/img/roupa_cima.png">
+                    <img class="roupa-base" src="../img/roupa_cima.png">
                 </div>
             </div>
             <div class="produto-info-container">
                 <h1 id="nomeProduto"> Nome do produto </h1>
                 <strong id="precoProduto"> R$100.00 </strong>
 
-                <a class="button-white"> ADICIONAR AO CARRINHO </a>
+                <a class="button-white" id="adCarrinho"> ADICIONAR AO CARRINHO </a>
 
                 <div class="separator"></div>
                 <p><strong>Criado em: </strong><span id="dataProduto">01/01/26</span></p>
@@ -35,7 +35,8 @@
             </div>
         </section>
     </body>
-    <script src="/topbar.js"></script>
+    <script src="../topbar.js"></script>
     <script src="produto.js"></script>
+    <script src="../parallax.js"></script>
     
 </html>
