@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" lang="pt-br">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/style.css" rel="stylesheet">
+        <link href="/style.css" rel="stylesheet">
+        <title>
+            Login
+        </title>
+    </head>
+    <body>
+        <div class="formpage-container">
+            <h1> Bom te ver de novo! </h1>
+            <p> Faça seu login para acessar sua conta </p>
+            <form id="loginForm">
+
+                <div class="input-group">
+                    <label for="email">E-mail</label>
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Digite seu e-mail"
+                        required
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label for="senha">Senha</label>
+                    <input
+                        type="password"
+                        id="senha"
+                        placeholder="Digite sua senha"
+                        required
+                    >
+                </div>
+                <div class="separator transparent"></div>
+                <!----<a href="#" class="forgot">Esqueceu sua senha?</a>-->
+                
+                <button type="submit" class="button-white">ENTRAR</button>
+
+                <div id="mensagem" class="red"></div>
+            </form>
+
+            <div class="register">
+                Não tem uma conta?
+                <a href="/signup/index.html">Cadastre-se</a>
+            </div>
+
+            <script src="/usuarios.js"></script>
+            <script src="login.js"></script>
+        </div>
+    </body>
+</html>
