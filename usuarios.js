@@ -22,7 +22,8 @@ function criarUsuario(nome, senha, email) {
     usuarios.push({
         nome: nome,
         senha: senha,
-        email: email
+        email: email,
+        carrinho: []
     });
 
     salvarUsuarios();
@@ -62,4 +63,5 @@ function pegarUsuario(senha,email) {
     }
     return false;
 }
+
 
